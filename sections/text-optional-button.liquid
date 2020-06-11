@@ -1,0 +1,126 @@
+<style>
+#announce_bar {
+  background-color: {{ section.settings.color_bg }};
+}
+#announce_bar p {
+  color: {{ section.settings.color_text }};
+}
+#announce_bar a {
+  color: {{ section.settings.color_text }};
+}
+{% if section.settings.visibility == 'both' %}
+#announce_bar {
+  display: block;
+}
+{% endif %}
+
+{% if section.settings.visibility == 'desktop' %}
+#announce_bar {
+  display: block;
+}
+@media screen and (max-width: 768px) {
+#announce_bar {
+  display: none;
+}
+}
+{% endif %}
+</style>
+{% if section.blocks.size > 0 %}
+<div data-section-id="{{ section.id }}" id="announce_bar">
+  <div class="sectioin-wrapper">
+    <div class="announce-slider">
+      {%- for block in section.blocks -%}
+      <div class="slider-item {% if block.settings.button_text != blank and block.settings.button_link != blank  %} with-button{% endif %}">
+    	  <p>
+            {{ block.settings.message_text }}
+            
+            {% if block.settings.button_text != blank and block.settings.button_link != blank  %}
+            <a href={{block.settings.button_link}}>{{block.settings.button_text}}</a>
+            {% endif %}
+        </p>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Text with optional button",
+    "class": "index-section index-section--announce_bar",
+    "max_blocks": 9,
+    "settings" : [
+      {
+        "type": "select",
+        "id": "visibility",
+        "label": "Visibility",
+        "default": "both",
+        "options": [
+          {
+            "value": "both",
+            "label": "Desktop + Mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "Desktop only"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#000000"
+      }
+    ],
+    "presets": [
+      {
+        "name": {
+          "en": "Text with optional button"
+        },
+        "category": {
+          "en": "Text"
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "message_text",
+            "label": "Message",
+            "default": "Default Message Text"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Click Here"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+{% endjavascript %}

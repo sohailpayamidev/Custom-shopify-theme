@@ -1,0 +1,305 @@
+<footer class="site-footer small--text-center" role="contentinfo">
+  <div class="wrapper">
+    <div class="grid-uniform">
+      <div class="grid__item two-quarters">
+        <a href="/" class="site-footer__logo-link">
+          <img src="{{ section.settings.logo | img_url: image_size }}"
+               srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+               alt="{{ section.settings.logo.alt | default: shop.name }}" />
+        </a>
+
+        <div class="grid-uniform">
+          {% if linklists[section.settings.helps_link_list].links.size > 0 %}
+          <div class="grid__item one-third">
+            <div class="footer_menu_title">
+              <h5>Help</h5>
+            </div>
+            <div class="footer_menu_body">
+              <ul class="no-bullets site-footer__linklist">
+                {% for link in linklists[section.settings.helps_link_list].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if linklists[section.settings.pages_link_list].links.size > 0 %}
+          <div class="grid__item one-third">
+            <div class="footer_menu_title">
+              <h5>Pages</h5>
+            </div>
+            <div class="footer_menu_body">
+              <ul class="no-bullets site-footer__linklist">
+                {% for link in linklists[section.settings.pages_link_list].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if linklists[section.settings.auth_link_list].links.size > 0 %}
+          <div class="grid__item one-third">
+            <div class="footer_menu_title">
+              <h5>My Account</h5>
+            </div>
+            <div class="footer_menu_body">
+              <ul class="no-bullets site-footer__linklist">
+                {% for link in linklists[section.settings.auth_link_list].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        {%- if section.settings.show_payment_icons -%}
+          {%- unless shop.enabled_payment_types == empty -%}
+            <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+            <ul class="inline-list payment-icons">
+              {%- for type in shop.enabled_payment_types -%}
+                <li>
+                  {{ type | payment_type_svg_tag: class: 'icon' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endunless -%}
+        {%- endif -%}
+      </div>
+
+      <div class="grid__item two-quarters">
+        <div class="footer-newsletter">
+          {% form 'customer' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+              <div class="newsletter--form">
+                <div class="note form-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+              </div>
+            {% else %}
+              <label for="Email" class="newsletter__label hidden-label">Sign Up For Our Newsletter</label>
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="newsletter--form">
+                <div class="input-group">
+                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Your email address" name="contact[email]" id="Email" class="input-group-field newsletter__input" autocorrect="off" autocapitalize="off">
+                  <span class="input-group-btn">
+                    <button id="Subscribe" type="submit"
+                      class="btn newsletter__submit">
+                      <span class="newsletter__submit-text--small">
+                        <span class="icon icon-arrow-right" aria-hidden="true"></span>
+                      </span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+
+        <div class="footer_social_links">
+            <ul class="no-bullets social-icons">
+              {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                    <span class="icon icon-facebook" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                    <span class="icon icon-twitter" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_pinterest_link != blank %}
+                <li>
+                  <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                    <span class="icon icon-pinterest" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                    <span class="icon icon-instagram" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_snapchat_link != blank %}
+                <li>
+                  <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                    <span class="icon icon-snapchat" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_google_plus_link != blank %}
+                <li>
+                  <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                    <span class="icon icon-google_plus" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_tumblr_link != blank %}
+                <li>
+                  <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                    <span class="icon icon-tumblr" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_youtube_link != blank %}
+                <li>
+                  <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                    <span class="icon icon-youtube" aria-hidden="true"></span>
+                    YouTube
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_vimeo_link != blank %}
+                <li>
+                  <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                    <span class="icon icon-vimeo" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_fancy_link != blank %}
+                <li>
+                  <a href="{{ settings.social_fancy_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                    <span class="icon icon-fancy" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div class="copyright__content-information">
+      <p>Copyright &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: "http://www.mod.la" }} All rights reserved.<br>{{ powered_by_link }}</p>
+    </div>
+
+    {% if linklists[section.settings.bottom_leagal_list].links.size > 0 %}
+      <ul class="no-bullets site-footer__linklist">
+        {% for link in linklists[section.settings.bottom_leagal_list].links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+  </div>
+</footer>
+
+
+
+{% schema %}
+{
+  "name": {
+    "da": "Sidefod",
+    "de": "Fußzeile",
+    "en": "Footer",
+    "es": "Pie de página",
+    "fi": "Alatunniste",
+    "fr": "Pied de page",
+    "hi": "फुटर",
+    "it": "Footer",
+    "ja": "フッター",
+    "ko": "바닥글",
+    "ms": "Pengaki",
+    "nb": "Footer",
+    "nl": "Voettekst",
+    "pt-BR": "Rodapé",
+    "pt-PT": "Rodapé",
+    "sv": "Sidfot",
+    "th": "ส่วนท้าย",
+    "zh-CN": "页脚",
+    "zh-TW": "頁尾"
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "da": "Logo",
+        "de": "Logo",
+        "en": "Logo",
+        "es": "Logo",
+        "fi": "Logo",
+        "fr": "Logo",
+        "hi": "लोगो",
+        "it": "Logo",
+        "ja": "ロゴ",
+        "ko": "로고",
+        "ms": "Logo",
+        "nb": "Logo",
+        "nl": "Logo",
+        "pt-BR": "Logotipo",
+        "pt-PT": "Logótipo",
+        "sv": "Logotyp",
+        "th": "โลโก้",
+        "zh-CN": "logo",
+        "zh-TW": "商標"
+      }
+    },
+    {
+      "type": "link_list",
+      "id": "helps_link_list",
+      "label": "Footer helps menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "pages_link_list",
+      "label": "Footer pages menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "auth_link_list",
+      "label": "Footer auth menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_link_list",
+      "label": "Footer bottom menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_leagal_list",
+      "label": "Footer leagal menu",
+      "default": "footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": {
+        "da": "Vis betalingsikoner",
+        "de": "Zahlungssymbole anzeigen",
+        "en": "Show payment icons",
+        "es": "Mostrar iconos de pago",
+        "fi": "Näytä maksukuvakkeet",
+        "fr": "Afficher les icônes de paiement",
+        "hi": "भुगतान आइकन दिखाएं",
+        "it": "Mostra le icone di pagamento",
+        "ja": "支払いアイコンを表示する",
+        "ko": "결제 아이콘 표시",
+        "ms": "Tunjukkan ikon pembayaran",
+        "nb": "Vis betalingsikoner",
+        "nl": "Betalingspictogrammen weergeven",
+        "pt-BR": "Exibir ícones de pagamento",
+        "pt-PT": "Mostrar ícones de pagamento",
+        "sv": "Visa betalningsikoner",
+        "th": "แสดงไอคอนการชำระเงิน",
+        "zh-CN": "显示付款图标",
+        "zh-TW": "顯示付款圖示"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

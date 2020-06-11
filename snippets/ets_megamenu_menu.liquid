@@ -1,0 +1,307 @@
+{% assign current_url = '/' %}
+
+{% case template %}
+	{% when 'page' %}
+		{% assign current_url = page.url %}
+	{% when 'blog' %}
+		{% assign current_url = blog.url %}
+	{% when 'article' %}
+		{% assign current_url = blog.url %}
+	{% when 'collection' %}
+		{% assign current_url = collection.url %}
+	{% when 'product' %}
+		{% assign current_url = product.url %}
+{% endcase %}
+<div class="ets_mm_height_sticky
+ disable_sticky_mobile
+"></div>
+<div class="ets_megamenu_frame ets_mm_container_sticky  ets_mm_hidden
+             disable_sticky_mobile
+    ">
+
+  <div 
+    class="ets_mm_container_width "
+    style="    list-style: none;
+    margin: 0 auto; 
+              width: 1170px
+    ">
+      <div class="ybc-menu-toggle ybc-menu-btn closed">
+          <span class="ybc-menu-button-toggle_icon"><i class="icon-bar"></i><i class="icon-bar"></i><i class="icon-bar"></i></span>
+          Menu
+      </div>
+    <ul
+    class="mm_menus_ul ets_mm_megamenu layout_layout1 
+    effect_hover_default
+                     sticky_enabled
+                   disable_sticky_mobile
+                             show_icon_in_mobile
+                  transition_floating
+    "
+           data-bggray=&quot;bg_gray&quot;
+    >
+        <li class="close_menu">
+            <div class="pull-left">
+                <span class="mm_menus_back">
+                    <i class="icon-bar"></i>
+                    <i class="icon-bar"></i>
+                    <i class="icon-bar"></i>
+                </span>
+                Menu
+            </div>
+            <div class="pull-right">
+                <span class="mm_menus_back_icon"></span>
+                Back
+            </div>
+        </li>
+
+      <!-- start insert code -->
+                              <li
+        class="mm_menus_li mm_sub_align_full
+                              "
+        style="">
+
+          <a href="/"
+            style=""
+            target="_blank">
+            <span class="mm_menu_content_title">
+                              <i class="fa fa-home"></i>
+                            Home
+              <span class="mm_arrow"></span>
+                      </span>
+          </a>
+          
+                      <ul class="mm_columns_ul" style="
+                                      width: 100%;
+                        ">
+              <!-- column and block -->
+                          </ul>
+                  </li>
+        <!-- end insert code -->
+    </ul>
+
+      </div>
+</div>
+<style type="text/css">
+        
+  
+       .ets_mm_block p,.ets_mm_block, .ets_mm_block *{
+        font-size: 16px;
+    }
+
+    .transition_floating .close_menu,
+    .transition_full_screen .close_menu{
+        background-color: rgba(0, 0, 0, 1); /* Menu bar background on mobile */
+    }
+    .ets_mm_megamenu.mm_menus_ul .close_menu{
+        color: rgba(255, 255, 255, 1); /* Menu bar color on mobile  */
+    }
+    .close_menu .icon-bar{
+        background: rgba(255, 255, 255, 1); /* Menu bar color on mobile  */
+    }
+    .mm_menus_back_icon{
+        border-left-color: rgba(255, 255, 255, 1); /* Menu bar color on mobile  */
+        border-top-color: rgba(255, 255, 255, 1); /* Menu bar color on mobile  */
+    }
+    .ets_mm_block h4.submenu_title{
+        font-size: 16px; /* Title submenu font size  */
+    }
+    .ets_mm_block p,.ets_mm_block, .ets_mm_block *,
+    .mm_tab_name.mm_tab_toggle a{
+        font-size: 16px; /* General text font size  */
+    }
+    .mm_tab_name.mm_tab_toggle, .mm_tab_name.mm_tab_toggle >a{
+        color: rgba(65, 65, 65, 1); /* Sub-menu text color */
+    }
+    .mm_menus_li > a{
+        font-size: 16px;
+    }
+
+    @media(min-width: 768px){
+        /*layout*/
+
+        .layout_layout1.ets_mm_megamenu,
+        .ets_mm_container_sticky.scroll_heading{
+            background: linear-gradient(#FFFFFF, #F2F2F2) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background: -webkit-linear-gradient(#FFFFFF, #F2F2F2) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background: -o-linear-gradient(#FFFFFF, #F2F2F2) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+        .layout_layout1.ets_mm_megamenu,
+        .ets_mm_container_sticky.scroll_heading{
+            background: ;
+            outline: none;
+        }
+        .layout_layout3 .mm_tab_li_content{
+            background: ;
+
+        }
+        .layout_layout3 .mm_tabs_li.open.mm_tabs_has_content .mm_tab_li_content .mm_tab_name::before{
+            border-right-color: rgba(255, 255, 255, 1);
+        }
+        .layout_layout4 .ets_mm_megamenu_content {
+            border-bottom-color: rgba(255, 255, 255, 1);
+        }
+        .layout_layout3:not(.ybc_vertical_menu) .mm_menus_li:hover > a,
+        .ets_mm_megamenu.layout_layout3.ybc_vertical_menu:hover,
+        .layout_layout3 .mm_tabs_li.open .mm_columns_contents_ul,
+        .layout_layout5:not(.ybc_vertical_menu) .mm_menus_li:hover > a,
+        .ets_mm_megamenu.layout_layout5.ybc_vertical_menu:hover,
+        .layout_layout3 .mm_tabs_li.open .mm_tab_li_content {
+            background-color: rgba(255, 255, 255, 1);
+
+        }
+        .ets_mm_megamenu.layout_layout4:not(.ybc_vertical_menu) .mm_menus_ul{
+            background: l4_color1;
+        }
+        .ets_mm_megamenu.layout_layout5:not(.ybc_vertical_menu) .mm_menus_ul{
+            background: l5_color1;
+        }
+
+        .layout_layout1:not(.ybc_vertical_menu) .mm_menus_li > a,
+        .layout_layout1 .mm_menus_li > a,
+        .layout_layout1 .mm_menu_cart svg.icon-cart,
+        .layout_layout1 .mm_extra_item svg.icon-search,
+        .layout_layout1 .mm_menu_cart .site-header__cart,
+        .layout_layout1 .mm_menu_cart .site-header__cart-count,
+        .layout_layout1 .ybc-menu-vertical-button{
+            color: rgba(72, 72, 72, 1);
+        }
+
+        .layout_layout1 .mm_menus_li:hover > a,
+        .layout_layout1 .mm_menus_li.active > a
+        .layout_layout1:hover .ybc-menu-vertical-button,
+        .layout_layout1 .mm_extra_item button[type="submit"]:hover i{
+            color: rgba(236, 66, 73, 1);
+        }
+        .layout_layout1 .mm_menus_li > a:before{
+            background-color: rgba(236, 66, 73, 1);
+        }
+        .layout_layout3:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar{
+            color: rgba(236, 66, 73, 1);
+        }
+        .layout_layout5:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar,
+        .layout_layout5 .mm_menus_li > a:before{
+            background-color: rgba(236, 66, 73, 1);
+        }
+
+        .layout_layout1:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar,
+        .ybc-menu-vertical-button.layout_layout1:hover{
+            background-color: rgba(236, 66, 73, 1);
+        }
+
+        .ets_mm_megamenu.layout_layout1.ybc_vertical_menu:hover,
+        .layout_layout1:not(.ybc_vertical_menu) .mm_menus_li:hover > a{
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .layout_layout4:not(.ybc_vertical_menu) .mm_menus_li:hover > a,
+        .layout_layout4:not(.ybc_vertical_menu) .mm_menus_li.active > a,
+        .layout_layout4:not(.ybc_vertical_menu) .mm_menus_li:hover > span,
+        .layout_layout4:not(.ybc_vertical_menu) .mm_menus_li.active > span,
+        .ets_mm_megamenu.layout_layout4.ybc_vertical_menu:hover{
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .layout_layout1.ets_mm_megamenu .mm_columns_ul,
+        .layout_layout1.ybc_vertical_menu .mm_menus_ul{
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .ybc_vertical_menu.layout_layout3 .mm_menus_ul.ets_mn_submenu_full_height .mm_menus_li:hover a::before{
+            background-color: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 1);
+        }
+        .ybc_vertical_menu.layout_layout4 .mm_menus_ul .mm_menus_li:hover a::before{
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .ybc_vertical_menu.layout_layout5 .mm_menus_ul .mm_menus_li:hover a::before{
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .layout_layout1 .ets_mm_block_content a,
+        .layout_layout1 .ets_mm_block_content p,
+        .layout_layout1 .ets_mm_block_content,
+        .layout_layout3 .mm_columns_ul *,
+        .layout_layout3 .mm_block_type_product span.price-item.price-item--regular,
+        .layout_layout3 .mm_block_type_product .product_varians,
+        .layout_layout1.ybc_vertical_menu .mm_menus_li > a{
+            color: rgba(65, 65, 65, 1);
+        }
+
+        .layout_layout1 .mm_columns_ul h1,
+        .layout_layout1 .mm_columns_ul h2,
+        .layout_layout1 .mm_columns_ul h3,
+        .layout_layout1 .mm_columns_ul h4,
+        .layout_layout1 .mm_columns_ul h5,
+        .layout_layout1 .mm_columns_ul h6,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h1 a,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h2 a,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h3 a,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h4 a,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h5 a,
+        .layout_layout1 .mm_columns_ul .ets_mm_block > h6 a,
+        .layout_layout1 .mm_columns_ul .h1,
+        .layout_layout1 .mm_columns_ul .h2,
+        .layout_layout1 .mm_columns_ul .h3,
+        .layout_layout1 .mm_columns_ul .h4,
+        .layout_layout1 .mm_columns_ul .h5,
+        .layout_layout1 .mm_columns_ul .h6{
+            color: rgba(65, 65, 65, 1);
+        }
+
+
+        .layout_layout1 .mm_tabs_li.open .mm_tab_toggle_title,
+        .layout_layout1 .mm_tabs_li.open .mm_tab_toggle_title a,
+        .layout_layout1 .mm_tabs_li:hover .mm_tab_toggle_title,
+        .layout_layout1 .mm_tabs_li:hover .mm_tab_toggle_title a,
+        .layout_layout1.ybc_vertical_menu .mm_menus_li > a,
+        .layout_layout1 li:hover > a,
+        .layout_layout1.ybc_vertical_menu .mm_menus_li:hover > a,
+        .layout_layout1 .mm_columns_ul .mm_block_type_product .product-title > a:hover,
+        .layout_layout1 li > a:hover{
+            color: rgba(236, 66, 73, 1);
+        }
+
+        .ets_mm_disabled_menu,
+        .ets_mm_hidden{
+            display:none;
+        }
+        /*end layout*/
+        .layout_layout2:not(.ybc_vertical_menu) .mm_menus_li.active > a,
+        .layout_layout2:hover .ybc-menu-vertical-button .ybc-menu-button-toggle_icon_default .icon-bar {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+
+        .layout_layout3 li:hover > a,
+        .layout_layout3 li > a:hover,
+        .layout_layout3 .mm_tabs_li.open .mm_tab_toggle_title,
+        .layout_layout3 .mm_tabs_li.open .mm_tab_toggle_title a,
+        .layout_layout3 .mm_tabs_li:hover .mm_tab_toggle_title,
+        .layout_layout3 .mm_tabs_li:hover .mm_tab_toggle_title a,
+        .layout_layout3.ybc_vertical_menu .mm_menus_li > a,
+        .layout_layout3 .has-sub .ets_mm_categories li > a:hover,{
+            color: rgba(236, 66, 73, 1);
+        }
+        .layout_layout4 li:hover > a,
+        .layout_layout4 li > a:hover,
+        .layout_layout4 .mm_tabs_li.open .mm_tab_toggle_title,
+        .layout_layout4 .mm_tabs_li.open .mm_tab_toggle_title a,
+        .layout_layout4 .mm_tabs_li:hover .mm_tab_toggle_title,
+        .layout_layout4 .mm_tabs_li:hover .mm_tab_toggle_title a,
+        .layout_layout4.ybc_vertical_menu .mm_menus_li > a,
+        .layout_layout4.ybc_vertical_menu .mm_menus_li:hover > a{
+            color: rgba(236, 66, 73, 1);
+        }
+        .layout_layout5 li:hover > a,
+        .layout_layout5 li > a:hover,
+        .layout_layout5 .mm_tabs_li.open .mm_tab_toggle_title,
+        .layout_layout5 .mm_tabs_li.open .mm_tab_toggle_title a,
+        .layout_layout5 .mm_tabs_li:hover .mm_tab_toggle_title,
+        .layout_layout5 .mm_tabs_li:hover .mm_tab_toggle_title a,
+        .layout_layout5.ybc_vertical_menu .mm_menus_li > a,
+        .layout_layout5.ybc_vertical_menu .mm_menus_li:hover > a{
+            color: rgba(236, 66, 73, 1);
+        }
+
+
+    }
+
+</style>

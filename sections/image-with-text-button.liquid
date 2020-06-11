@@ -1,0 +1,169 @@
+{% if section.blocks.size > 0 %}
+<div data-section-id="{{ section.id }}" class="trend--{{ section.id }}" id="trending-block" style="background-color: {{section.settings.trending_bg_color}}">
+  <div class="wrapper">
+    <div class="section-header text-left">
+        <h2 class="h1 section-header__title">{{ section.settings.head_text }}</h2>
+    </div>
+    <div class="section-body tow-rows-section">
+      {%- for block in section.blocks -%}
+      {%- assign alignment = block.settings.alignment -%}
+      {%- style -%}
+        .trend--{{ section.id }} .trending-item--{{ block.id }} figcaption {
+        {% if alignment == "top_center" or alignment == "middle_center" or alignment == "bottom_center" %}
+          text-align: center;
+        {% endif %}
+        {% if alignment == "middle_left" %}
+          text-align: left;
+        {% endif %}
+        {% if alignment == "middle_right" %}
+          text-align: right;
+        {% endif %}
+        }
+
+        .trend--{{ section.id }} .trending-item--{{ block.id }} figcaption .card-overlay-content {
+        {% if alignment == "top_center" %}
+          vertical-align: top;
+        {% endif %}
+        {% if alignment == "middle_center" or alignment == "middle_left" or alignment == "middle_right" %}
+          vertical-align: middle;
+        {% endif %}
+        {% if alignment == "bottom_center" %}
+          vertical-align: bottom;
+        {% endif %}
+        }
+      {%- endstyle -%}
+      <div class="trending-item trending-item--{{ block.id }} {% if section.blocks.size == 3 %}with-three{% endif %}">
+        <figure class="image-card">
+            <div class="card-image-wrapper">
+              <img src="{{ block.settings.image | img_url: '900x' }}"
+                   alt="{{ block.settings.image.alt | default: block.settings.text }}" />
+            </div>
+            <figcaption>
+                <div class="card-overlay-content">
+                    <p style="color: {{ block.settings.text_color }}">{{ block.settings.text }}</p>
+                    <div class="cta-container">
+                        <a href="{{ block.settings.button_link }}" target="_self" class="btn btn-primary" style="background-color: {{block.settings.button_bg_color}}; color: {{ block.settings.button_tx_color }}; ">{{ block.settings.button_text }}</a>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Image - text and button",
+    "class": "index-section index-section--trending",
+    "max_blocks": 3,
+    "settings" : [
+      {
+        "type": "text",
+        "id": "head_text",
+        "label": "Heading",
+        "default": "Now Trending"
+      },
+	  {
+		"type": "color",
+		"id": "trending_bg_color",
+		"label": "Background Color",
+		"default": "#ffffff"
+	  }
+    ],
+    "presets": [
+      {
+        "name": {
+          "en": "Image with text and button"
+        },
+        "category": {
+          "en": "Image"
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Default Text"
+          },
+          {
+              "type": "color",
+              "id": "text_color",
+              "label": "Text Color",
+              "default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          },
+          {
+            "type": "color",
+            "id": "button_tx_color",
+            "label": "Button Text Color",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "button_bg_color",
+            "label": "Button Background Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "top_center",
+                "label": "Top Center"
+              },
+              {
+                "value": "middle_center",
+                "label": "Middle Center"
+              },
+              {
+                "value": "bottom_center",
+                "label": "Bottom Center"
+              },
+              {
+                "value": "middle_left",
+                "label": "Middle Left"
+              },
+              {
+                "value": "middle_right",
+                "label": "Middle Right"
+              }
+            ],
+            "default": "top_center"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="{{ 'ets_megamenu.css' | asset_url}}" />
+<script id="etsMMNavigator">
+  var ETS_MM_MONEY_FORMAT = {{ shop.money_format | json }};
+  var ETS_MM_LINK_LIST = [{%- for list in linklists -%} {id: "{{list.handle}}", title: "{{ list.title | replace: '"', '\"' }}", items: [{%- for link in linklists[list.handle].links -%}"{{ link.url | replace: '"', '\"' }}", {%- endfor -%}]}, {%- endfor -%}];
+</script>
+
+<script src="{{ 'ets_megamenu_config.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'ets_megamenu.js' | asset_url }}" type="text/javascript"></script>
